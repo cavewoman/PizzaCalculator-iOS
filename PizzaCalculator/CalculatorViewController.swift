@@ -12,6 +12,8 @@ class CalculatorViewController: UIViewController {
   @IBOutlet var pizzasLabel: UILabel!
   @IBOutlet var peopleTextField: UITextField!
   
+  var pizzaStore: PizzaStore!
+  
   var peopleValue: Double? {
     didSet {
       updatePizzasLabel()
@@ -40,6 +42,22 @@ class CalculatorViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     updatePizzasLabel()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "showSuggestions"?:
+      let suggestionsViewController = segue.destination as! SuggestionsViewController
+      if let pizzasValue = pizzasValue {
+      suggestionsViewController.suggestions = pizzaStore.getSuggestions(for: pizzasValue)
+      } else {
+        suggestionsViewController.suggestions = pizzaStore.getSuggestions(for: 0.0)
+      }
+      suggestionsViewController.pizzaStore = pizzaStore
+    default:
+      preconditionFailure("Unexpected segues identifier.")
+    }
+    
   }
   
   func convertPeopleToPizza(people: Double) -> Double {

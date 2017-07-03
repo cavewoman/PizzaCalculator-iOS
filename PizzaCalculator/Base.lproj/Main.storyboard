@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calculator-->
+        <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="PizzaCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,7 +70,13 @@
                             <constraint firstAttribute="trailing" secondItem="UfU-C6-gRi" secondAttribute="trailing" id="M8C-Qz-P7V"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calculator" image="icons8-Calculator-25" id="47C-lu-LBD"/>
+                    <navigationItem key="navigationItem" id="Fjl-cT-gWf">
+                        <barButtonItem key="rightBarButtonItem" title="Suggestions" id="Hcy-Lt-2on">
+                            <connections>
+                                <segue destination="kFH-GF-agI" kind="show" identifier="showSuggestions" id="C0t-sr-ipb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="peopleTextField" destination="CCj-cg-znL" id="QcW-LB-1Mt"/>
                         <outlet property="pizzasLabel" destination="mVd-t3-tVq" id="yGK-N6-htG"/>
@@ -83,7 +89,51 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="964" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1903.2" y="36.431784107946029"/>
+        </scene>
+        <!--Suggestions View Controller-->
+        <scene sceneID="P6J-W4-n6D">
+            <objects>
+                <tableViewController id="kFH-GF-agI" customClass="SuggestionsViewController" customModule="PizzaCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xb2-7k-RhE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuggestionCell" textLabel="rp4-xB-I4Y" detailTextLabel="hot-jC-kLJ" style="IBUITableViewCellStyleValue1" id="Gt0-Rz-hWT">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gt0-Rz-hWT" id="vbW-i9-Q3X">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rp4-xB-I4Y">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hot-jC-kLJ">
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kFH-GF-agI" id="ydI-iH-nhx"/>
+                            <outlet property="delegate" destination="kFH-GF-agI" id="QQ3-VR-3hO"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2b-oo-zJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2806" y="36"/>
         </scene>
         <!--Pizzas View Controller-->
         <scene sceneID="uD8-Wf-Ebw">
@@ -273,7 +323,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hTL-PW-lfG"/>
+                        <segue destination="sYd-Vs-DQ7" kind="relationship" relationship="viewControllers" id="hTL-PW-lfG"/>
                         <segue destination="FCy-nG-uwP" kind="relationship" relationship="viewControllers" id="uf9-LH-pUX"/>
                     </connections>
                 </tabBarController>
@@ -299,6 +349,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEl-lc-whV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="800.14992503748135"/>
+        </scene>
+        <!--Calculator-->
+        <scene sceneID="xZB-1i-D0G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sYd-Vs-DQ7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calculator" image="icons8-Calculator-25" id="47C-lu-LBD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cPC-a7-e8f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qf6-Wf-7Rn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="njb-G1-pCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="36.431784107946029"/>
         </scene>
     </scenes>
     <resources>

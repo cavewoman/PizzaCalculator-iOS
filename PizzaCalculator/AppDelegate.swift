@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let tabController = window!.rootViewController as! UITabBarController
     
+    let calcNavController = tabController.viewControllers?[0] as! UINavigationController
     let pizzaNavController = tabController.viewControllers?[1] as! UINavigationController
+    
+    let calcViewController = calcNavController.topViewController as! CalculatorViewController
+    calcViewController.pizzaStore = pizzaStore
     
     let pizzasViewController = pizzaNavController.topViewController as! PizzasViewController
     pizzasViewController.pizzaStore = pizzaStore

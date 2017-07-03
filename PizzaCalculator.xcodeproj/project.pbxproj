@@ -17,6 +17,7 @@
 		95BE02211F0AAEB00047DEF0 /* Pizza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE02201F0AAEB00047DEF0 /* Pizza.swift */; };
 		95BE02231F0AB1240047DEF0 /* PizzaStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE02221F0AB1240047DEF0 /* PizzaStore.swift */; };
 		95BE02251F0ABF4C0047DEF0 /* PizzaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE02241F0ABF4C0047DEF0 /* PizzaDetailViewController.swift */; };
+		95BE02271F0AD5880047DEF0 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE02261F0AD5880047DEF0 /* SuggestionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		95BE02201F0AAEB00047DEF0 /* Pizza.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pizza.swift; sourceTree = "<group>"; };
 		95BE02221F0AB1240047DEF0 /* PizzaStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaStore.swift; sourceTree = "<group>"; };
 		95BE02241F0ABF4C0047DEF0 /* PizzaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PizzaDetailViewController.swift; sourceTree = "<group>"; };
+		95BE02261F0AD5880047DEF0 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				95BE02071F0A82B10047DEF0 /* AppDelegate.swift */,
 				95BE020B1F0A82B10047DEF0 /* Main.storyboard */,
+				95BE02261F0AD5880047DEF0 /* SuggestionsViewController.swift */,
 				95BE02241F0ABF4C0047DEF0 /* PizzaDetailViewController.swift */,
 				95BE021E1F0AADD60047DEF0 /* PizzasViewController.swift */,
 				95BE02221F0AB1240047DEF0 /* PizzaStore.swift */,
@@ -156,6 +159,7 @@
 				95BE02101F0A82B10047DEF0 /* PizzaCalculator.xcdatamodeld in Sources */,
 				95BE021F1F0AADD60047DEF0 /* PizzasViewController.swift in Sources */,
 				95BE021D1F0A8B7F0047DEF0 /* CalculatorViewController.swift in Sources */,
+				95BE02271F0AD5880047DEF0 /* SuggestionsViewController.swift in Sources */,
 				95BE02211F0AAEB00047DEF0 /* Pizza.swift in Sources */,
 				95BE02081F0A82B10047DEF0 /* AppDelegate.swift in Sources */,
 				95BE02251F0ABF4C0047DEF0 /* PizzaDetailViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 class PizzaStore {
   var allPizzas = [Pizza]()
+  var vegRatio = 0.3
   
   let pizzaArchiveURL: URL = {
     let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -48,17 +49,40 @@ class PizzaStore {
   }
   
   func getAllSortedPizzas() -> [Pizza] {
-    return allPizzas.sorted { $0.name! < $1.name! }
+    return sortPizzasByName(pizzas: allPizzas)
   }
   
   func getAllSortedVegPizzas() -> [Pizza] {
     let vegPizzas = allPizzas.filter { $0.type! == "veg" }
-    return vegPizzas.sorted { $0.name! < $1.name! }
+    return sortPizzasByName(pizzas: vegPizzas)
   }
   
   func getAllSortedNonVegPizzas() -> [Pizza] {
     let nonVegPizzas = allPizzas.filter { $0.type! != "veg" }
-    return nonVegPizzas.sorted { $0.name! < $1.name! }
+    return sortPizzasByName(pizzas: nonVegPizzas)
+  }
+  
+  func getSortedPizzas(from pizzas: [Pizza]) -> [String: [Pizza]] {
+    var vegPizzas = [Pizza]()
+    var nonVegPizzas = [Pizza]()
+    
+    pizzas.forEach { pizza in
+      if pizza.type == "veg" {
+        vegPizzas.append(pizza)
+      } else {
+        nonVegPizzas.append(pizza)
+      }
+    }
+    
+    let sortedVegPizzas = sortPizzasByName(pizzas: vegPizzas)
+    let sortedNonVegPizzas = sortPizzasByName(pizzas: nonVegPizzas)
+    
+    return ["veg": sortedVegPizzas, "non-veg": sortedNonVegPizzas]
+    
+  }
+  
+  func sortPizzasByName(pizzas: [Pizza]) -> [Pizza] {
+    return pizzas.sorted { $0.name! < $1.name! }
   }
   
   func createBasePizzas() {
@@ -72,5 +96,38 @@ class PizzaStore {
                       createPizza(name: "Margherita", type: "veg", toppings: ["Mozzarella", "Basil", "EVOO", "Sea Salt"], price: 19),
                       createPizza(name: "Roasted Mushroom", type: "veg", toppings: ["EVOO", "Assorted Mushrooms", "Mozzarella", "Tomato Slices", "Capers", "Thyme", "Sea Salt"], price: 19)]
     allPizzas = basePizzas
+  }
+  
+  func getSuggestions(for count: Double?) -> [Pizza: Int] {
+    if let count = count, count > 0 {
+      let numOfVeg = ceil(count * vegRatio)
+      let numOfNonVeg = count - numOfVeg
+      
+      let vegPizzas = getAllSortedVegPizzas()
+      let nonVegPizzas = getAllSortedNonVegPizzas()
+      
+      var suggestions = [Pizza]()
+      
+      for _ in (0...(Int(numOfVeg) - 1)) {
+        let index = Int(arc4random_uniform(UInt32(vegPizzas.count)))
+        suggestions.append(vegPizzas[index])
+      }
+      
+      for _ in (0...(Int(numOfNonVeg) - 1)) {
+        let index = Int(arc4random_uniform(UInt32(nonVegPizzas.count)))
+        suggestions.append(nonVegPizzas[index])
+      }
+      
+      var groupedSuggestions: [Pizza: Int] = [:]
+      
+      for pizza in suggestions {
+        groupedSuggestions[pizza] = (groupedSuggestions[pizza] ?? 0) + 1
+      }
+      
+      
+      return groupedSuggestions
+    } else {
+      return [:]
+    }
   }
 }
