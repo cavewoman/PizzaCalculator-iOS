@@ -123,6 +123,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VBd-ln-3aB" kind="show" identifier="ShowPizzaDetails" id="cyg-pv-Que"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -134,6 +137,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2b-oo-zJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2806" y="36"/>
+        </scene>
+        <!--Pizza View Controller-->
+        <scene sceneID="zVc-Fr-QKC">
+            <objects>
+                <viewController id="VBd-ln-3aB" customClass="PizzaViewController" customModule="PizzaCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rgg-x0-r0K"/>
+                        <viewControllerLayoutGuide type="bottom" id="YH9-bl-XYQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZxI-RH-s4v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ao9-rz-30n">
+                                <rect key="frame" x="8" y="64" width="359" height="554"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizza-geometric-background" translatesAutoresizingMaskIntoConstraints="NO" id="AYk-eM-wUj">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="277"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toppings" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIn-w8-u8g">
+                                        <rect key="frame" x="0.0" y="277" width="359" height="277"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YH9-bl-XYQ" firstAttribute="top" secondItem="Ao9-rz-30n" secondAttribute="bottom" id="Ab5-T5-mYs"/>
+                            <constraint firstAttribute="trailing" secondItem="Ao9-rz-30n" secondAttribute="trailing" constant="8" id="I2Q-od-fuq"/>
+                            <constraint firstItem="Ao9-rz-30n" firstAttribute="leading" secondItem="ZxI-RH-s4v" secondAttribute="leading" constant="8" id="VFh-GH-xdA"/>
+                            <constraint firstItem="Ao9-rz-30n" firstAttribute="top" secondItem="Rgg-x0-r0K" secondAttribute="bottom" id="uOM-YA-ZPJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="toppingsLabel" destination="VIn-w8-u8g" id="cxr-b9-eHV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vmd-7A-2eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3696.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--Pizzas View Controller-->
         <scene sceneID="uD8-Wf-Ebw">
@@ -375,6 +421,7 @@
         <image name="icons8-Calculator-25" width="25" height="25"/>
         <image name="icons8-Pizza-25" width="25" height="25"/>
         <image name="pizza-face-background" width="340" height="270"/>
+        <image name="pizza-geometric-background" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DwB-Cv-qeg"/>

@@ -70,6 +70,27 @@ class SuggestionsViewController: UITableViewController {
     
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "ShowPizzaDetails"?:
+      let pizza: Pizza
+      let pizzaViewController = segue.destination as! PizzaViewController
+      
+      if let indexPath = tableView.indexPathForSelectedRow {
+        switch indexPath.section {
+        case 0:
+          pizza = (sortedSuggestions["veg"]?[indexPath.row])!
+          pizzaViewController.pizza = pizza
+        default:
+          pizza = (sortedSuggestions["non-veg"]?[indexPath.row])!
+          pizzaViewController.pizza = pizza
+        }
+      }
+    default:
+      preconditionFailure("Unexpected segues identifier.")
+    }
+  }
+  
   func getTotalFromSuggestions(suggestions: [Pizza: Int]) -> Int {
     var total = 0
     suggestions.forEach { (pizza, count) in
