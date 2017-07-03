@@ -24,10 +24,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UfU-C6-gRi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unsplash-pizza" translatesAutoresizingMaskIntoConstraints="NO" id="gpA-0B-0qw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoon-pizza-slices-background" translatesAutoresizingMaskIntoConstraints="NO" id="gpA-0B-0qw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="770" verticalCompressionResistancePriority="770" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="# of People" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCj-cg-znL">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="770" verticalCompressionResistancePriority="770" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="People" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCj-cg-znL">
                                         <rect key="frame" x="0.0" y="135" width="375" height="127"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="70"/>
@@ -85,6 +85,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="unsplash-pizza" width="5832" height="3888"/>
+        <image name="cartoon-pizza-slices-background" width="750" height="352"/>
     </resources>
 </document>
