@@ -81,6 +81,15 @@ class PizzaStore {
     
   }
   
+  func findPizza(byName key: String) -> Pizza? {
+    var pizza = allPizzas.filter { $0.name  == key }
+    if pizza.isEmpty {
+      return nil
+    } else {
+      return pizza[0]
+    }
+  }
+  
   func sortPizzasByName(pizzas: [Pizza]) -> [Pizza] {
     return pizzas.sorted { $0.name! < $1.name! }
   }
@@ -93,29 +102,45 @@ class PizzaStore {
                       createPizza(name: "Veg Out", type: "veg", toppings: ["Sliced Tomatoes", "Artichoke Hearts", "Mushrooms", "Red Onions", "Green Peppers", "Green Olives", "Black Olives"], price: 23),
                       createPizza(name: "Aphro Chicken", type: "non-veg", toppings: ["Lemon Roasted Chicken", "Tomato", "Feta", "Kalamata Olives", "Roasted Red Peppers", "Red Onion", "Pepperoncini Peppers"], price: 25),
                       createPizza(name: "Drunk Pig", type: "non-veg", toppings: ["Vodka Sauce", "Ricotta", "Fennel Sausage", "Mozzarella", "Parmesan", "Crushed Red Pepper"], price: 23),
-                      createPizza(name: "Margherita", type: "veg", toppings: ["Mozzarella", "Basil", "EVOO", "Sea Salt"], price: 19),
-                      createPizza(name: "Roasted Mushroom", type: "veg", toppings: ["EVOO", "Assorted Mushrooms", "Mozzarella", "Tomato Slices", "Capers", "Thyme", "Sea Salt"], price: 19)]
+                      createPizza(name: "Cheese", type: "veg", toppings: ["Cheese"], price: 19),
+                      createPizza(name: "Pepperoni", type: "non-veg", toppings: ["Pepperoni"], price: 19),
+                      createPizza(name: "Super Hero", type: "non-veg", toppings: ["Pepperoni", "Carmelized Onions","Provolone", "Meatballs", "Smoked Mozzarella", "Black Olives", "Calabrian Chiles", "Oregano"], price: 25),
+                      createPizza(name: "Meatball", type: "non-veg", toppings: ["Meatballs", "Ricotta", "Red Onion", "Fresh Garlic", "Basil", "Pecorino Romano"], price: 23),
+                      createPizza(name: "Sausage & Peppers", type: "non-veg", toppings: ["Roasted red peppers", "Red onion", "Jalapeno", "Green Pepper", "Crushed Red Pepper", "Parmesan Cheese"], price: 23),
+                      createPizza(name: "Little Italy", type: "non-veg", toppings: ["Fennel Sausage", "Pepperoni", "Ricotta", "Calabrian Chiles", "Fresh Garlic", "Basil", "Pecorino Romano"], price: 24),
+                      createPizza(name: "Bianca Supreme", type: "non-veg", toppings: ["EVOO", "Fresh Mozzarella", "Spinach", "Mushrooms", "Bacon", "Gorgonzola"], price: 25)]
     allPizzas = basePizzas
   }
   
   func getSuggestions(for count: Double?) -> [Pizza: Int] {
     if let count = count, count > 0 {
-      let numOfVeg = ceil(count * vegRatio)
-      let numOfNonVeg = count - numOfVeg
+      let numOfVeg = ceil(count * vegRatio) - 1
+      let numOfNonVeg = count - numOfVeg - 3
       
       let vegPizzas = getAllSortedVegPizzas()
       let nonVegPizzas = getAllSortedNonVegPizzas()
       
       var suggestions = [Pizza]()
-      
-      for _ in (0...(Int(numOfVeg) - 1)) {
-        let index = Int(arc4random_uniform(UInt32(vegPizzas.count)))
-        suggestions.append(vegPizzas[index])
+      suggestions.append(findPizza(byName: "Cheese")!)
+      if count > 1 {
+        suggestions.append(findPizza(byName: "Pepperoni")!)
+      }
+      if count > 2 {
+        suggestions.append(findPizza(byName: "Drunk Pig")!)
       }
       
-      for _ in (0...(Int(numOfNonVeg) - 1)) {
-        let index = Int(arc4random_uniform(UInt32(nonVegPizzas.count)))
-        suggestions.append(nonVegPizzas[index])
+      if numOfVeg > 0 {
+        for _ in (0...(Int(numOfVeg) - 1)) {
+          let index = Int(arc4random_uniform(UInt32(vegPizzas.count)))
+          suggestions.append(vegPizzas[index])
+        }
+      }
+      
+      if numOfNonVeg > 0 {
+        for _ in (0...(Int(numOfNonVeg) - 1)) {
+          let index = Int(arc4random_uniform(UInt32(nonVegPizzas.count)))
+          suggestions.append(nonVegPizzas[index])
+        }
       }
       
       var groupedSuggestions: [Pizza: Int] = [:]
