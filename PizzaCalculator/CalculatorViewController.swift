@@ -61,7 +61,7 @@ class CalculatorViewController: UIViewController {
   }
   
   func convertPeopleToPizza(people: Double) -> Double {
-    let slices = 2 * people
+    let slices = 1.5 * people
     let pizzas = ceil(slices/8)
     return pizzas
   }
